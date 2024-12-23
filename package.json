@@ -1,0 +1,13 @@
+{
+  "name": "qa_app",
+  "version": "1.0.0",
+  "description": "Q/A application for exams preparation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:backend": "cd ./backend && npm run start",
+    "start": "cd ./ci && docker-compose up"
+  },
+  "author": "",
+  "license": "ISC"
+}
