@@ -1,16 +1,24 @@
 version: '3.1'
 name: qa_app
 services:
+  qa_frontend:
+    image: qa_app_frontend:v0.0.1
+    container_name: qa-app-qa_frontend
+    build: ../frontend/.
+    restart: always
+    ports:
+      - "3002:3000"
+    depends_on:
+      - qa_backend
   qa_backend:
-    image: qa_app-backend:v0.01
+    image: qa_app-backend:v0.0.1
     container_name: qa-app-backend
     build: ../backend/.
     restart: always
     ports:
-      - "3000:3000"
+      - "3001:3000"
     environment:
       SERVICE_PORT: 3000
-      USE_HTTPS: false
       DB_HOST: "qa_database"
       DB_PORT: 27017
       DB_USER: "custom_user"

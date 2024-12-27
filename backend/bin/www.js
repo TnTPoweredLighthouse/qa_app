@@ -14,14 +14,17 @@ const server = USE_HTTPS ? https.createServer(httpsOptions, app) : http.createSe
 
 
 await datasource.initialize()
-
 server.listen(SERVICE_PORT);
 server.on('error', (err) => { console.log(err) })
-
-console.log(`Server is listening to port ${SERVICE_PORT}`)
-
-process.on('SIGTERM', async () => {
-    server.close(() => {
-        app.close()
-    })
+server.on('listening', () => {
+    console.log(`Opened server on ${server.address().address}:${server.address().port}`)
 })
+
+const gracefullShutdown = async () => {
+    server.close(() => {
+        app.close();
+    });
+}
+
+process.on('SIGINT', gracefullShutdown)
+process.on('SIGTERM', gracefullShutdown)
