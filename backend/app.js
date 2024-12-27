@@ -7,6 +7,6 @@ import getInvalidRoutes from './routes/invalidRoutes.js';
 const app = express();
 
 app.use(apiConfig.prefix, getApiRoutes());
-app.use('/*', getInvalidRoutes())
+app.use('/*', getInvalidRoutes());
 
 export default app;
