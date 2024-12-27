@@ -16,14 +16,41 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  tests:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci:all
+
+  linting:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: backend linting
+        run: npm run lint:backend
+      - name: frontend linting
+        run: npm run lint:frontend
+
+  testing:
+    needs: build
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
+
+      - name: pass on purpose
+        run: exit 0
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
@@ -34,3 +61,11 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+
+      - name: backend testing
+        run: npm run test:backend
+      - name: frontend testing
+        run: npm run test:frontend
+
+      - name: fail on purpose
+        run: exit 1
