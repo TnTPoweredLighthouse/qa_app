@@ -1,5 +1,9 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import css from "@/app/layout.module.css"
+import ReactQueryProvider from "@/components/ReactQueryProvider";
+
+import SideMenu from "@/components/side-menu/side-menu";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,8 +23,17 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+      <body className={`${geistSans.variable} ${geistMono.variable} `}>
+        <ReactQueryProvider>
+          <main className={css.container}>
+            <div className={css.side}>
+              <SideMenu></SideMenu>
+            </div>
+            <div className={css['main-view']}>
+              {children}
+            </div>
+          </main>
+        </ReactQueryProvider>
       </body>
     </html>
   );

@@ -1,9 +1,16 @@
 import mongoose from "mongoose";
+import { CategorySchema } from "./category.js";
 
-const userSchema = new mongoose.Schema({
-    name: String
+const UserSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    categories: {
+        type: [CategorySchema]
+    }
 });
 
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model('User', UserSchema);
 
 export default User;
