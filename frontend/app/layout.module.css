@@ -1,20 +1,21 @@
 .container {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    gap: 10px;
+    gap: 20px;
+    height: 100vh;
     justify-content: center;
     grid-template-areas:
-        "side side main-view main-view main-view main-view main-view main-view main-view main-view";
+        "side side side main main main main main main main main main";
 }
 
 
 .side {
     grid-area: side;
-    padding: 5px;
-    grid-column: 1;
+    padding: 20px;
+    padding: 10px;
 }
 
 .main-view {
-    grid-area: main-view;
-    padding: 5px;
+    grid-area: main;
+    padding: 10px;
 }

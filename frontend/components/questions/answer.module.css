@@ -1,0 +1,12 @@
+.container {
+    padding: 20px;
+    display: flex;
+    justify-content: end;
+}
+
+.answer {
+    padding: 20px;
+    background-color: #e9e1f0;
+    border-radius: 20px;
+
+}

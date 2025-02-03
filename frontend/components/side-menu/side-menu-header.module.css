@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+    place-content: end;
+    flex-direction: column;
+    height: 200px;
+}
+
+.categories-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}

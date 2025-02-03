@@ -1,5 +1,7 @@
+import css from '../main-view-placeholder.module.css'
+
 export default function BlogPostPage() {
     return (
-        <div>Please, select category</div>
+        <div className={css.container}>Please, select category</div>
     );
 }

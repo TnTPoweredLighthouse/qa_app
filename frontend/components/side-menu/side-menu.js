@@ -1,10 +1,15 @@
+import SideMenuHeader from "./side-menu-header"
+import CategoriesList from "./categories/categories-list"
+import Divider from "../common/divider"
 
-import CategoriesNav from "./categories-nav/categories-nav";
+import css from './side-menu.module.css'
 
-export default function SideMenu() {
+export default async function CategoriesNav() {
     return (
-        <div>
-            <CategoriesNav></CategoriesNav>
+        <div className={css.container}>
+            < SideMenuHeader />
+            < Divider />
+            < CategoriesList />
         </div>
-    );
+    )
 }
