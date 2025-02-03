@@ -4,6 +4,8 @@ import { useQuery } from '@tanstack/react-query';
 import { fetchCategories } from '@/lib/http.js'
 import CategoryListItem from "./category-list-item";
 
+import css from './categories-list.module.css'
+
 export default function CategoriesList() {
     const { data: categories, isLoading, isError, error } = useQuery({
         queryKey: ['categories'],
@@ -28,15 +30,17 @@ export default function CategoriesList() {
 
     if (categories) {
         return (
-            <ul>
-                {categories.map(category => {
-                    return (
-                        <li key={category.id}>
-                            <CategoryListItem category={category} />
-                        </li>
-                    )
-                })}
-            </ul>
+            <div className={css.container}>
+                <ul>
+                    {categories.map(category => {
+                        return (
+                            <li key={category.id}>
+                                <CategoryListItem category={category} />
+                            </li>
+                        )
+                    })}
+                </ul>
+            </div>
         )
     }
 

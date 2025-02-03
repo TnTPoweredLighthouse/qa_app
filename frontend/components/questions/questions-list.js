@@ -1,8 +1,10 @@
 'use client'
 
 import { useQuery } from '@tanstack/react-query';
-import QuestionsItem from './questions-item';
+import QuestionsListItem from './questions-list-item';
 import { fetchQuestionsForCategory } from '@/lib/http';
+
+import css from './questions-list.module.css'
 
 export default function QuestionsList({ category }) {
 
@@ -31,17 +33,15 @@ export default function QuestionsList({ category }) {
 
     if (questions) {
         return (
-            <ul>
+            <ul className={css.container}>
                 {questions.map(question => {
                     return (
                         <li key={question.id}>
-                            <QuestionsItem question={question} />
+                            <QuestionsListItem question={question} />
                         </li>
                     )
                 })}
             </ul>
         )
     }
-
-
 }

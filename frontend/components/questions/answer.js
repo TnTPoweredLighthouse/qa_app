@@ -1,8 +1,11 @@
-export default function Answer({ body }) {
+import css from './answer.module.css'
 
+export default function Answer({ body }) {
     return (
-        <div>
-            Answer: {body}
+        <div className={css.container}>
+            <span className={css.answer}>
+                Answer: {body}
+            </span>
         </div>
     )
 }
