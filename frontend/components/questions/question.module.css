@@ -3,6 +3,7 @@
 }
 
 .question {
+    display: inline-block;
     padding: 20px;
     background-color: #CAC4D0;
     border-radius: 20px;
