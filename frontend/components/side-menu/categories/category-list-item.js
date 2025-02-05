@@ -1,5 +1,6 @@
 'use client'
 import Link from "next/link"
+import Image from "next/image"
 
 import css from "./category-list-item.module.css"
 
@@ -14,7 +15,10 @@ export default function CategoryListItem({ category }) {
             </Link>
             <div className={css['management']}>
                 <span className={css['quantity-container']}>qty</span>
-                <Link href={categoryEditHref}>Edit</Link>
+                <Link className={css['edit-link']} href={categoryEditHref}>
+                    {/* <EditIcon /> */}
+                    <Image src='/edit-svgrepo-com.svg' alt="add" width={18} height={18}></Image>
+                </Link>
             </div>
         </div>
     )
