@@ -14,9 +14,8 @@ export default function CategoryListItem({ category }) {
             <Link href={categoryDetailsHref}>{name}
             </Link>
             <div className={css['management']}>
-                <span className={css['quantity-container']}>qty</span>
+                <span className={css['quantity-container']}>{category.questionsQuantity || 'no-data'}</span>
                 <Link className={css['edit-link']} href={categoryEditHref}>
-                    {/* <EditIcon /> */}
                     <Image src='/edit-svgrepo-com.svg' alt="add" width={18} height={18}></Image>
                 </Link>
             </div>

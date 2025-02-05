@@ -10,6 +10,6 @@ export const getAllCategories = async () => {
     // getRangeOfQuestionsforUserInCategory and etc etc
 
     const userData = await User.findOne({ name: DEFAULT_USERNAME });
-    const categories = userData.categories.map(cat => ({ name: cat.name, id: cat._id }));
+    const categories = userData.categories.map(cat => ({ name: cat.name, id: cat._id, questionsQuantity: cat.questions.length }));
     return categories;
 };
