@@ -6,6 +6,7 @@
 
 .answer {
     padding: 20px;
+    display: inline-block;
     background-color: #e9e1f0;
     border-radius: 20px;
 
