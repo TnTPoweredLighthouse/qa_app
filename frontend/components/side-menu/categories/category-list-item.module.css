@@ -1,0 +1,26 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+}
+
+.management {
+    display: flex;
+    align-items: center;
+}
+
+.quantity-container {
+    margin-right: 10px;
+}
+
+.edit-link {
+    height: 35px;
+    width: 35px;
+    padding: 7px;
+    border: 2px solid #0F0F0F;
+    border-radius: 20px;
+}

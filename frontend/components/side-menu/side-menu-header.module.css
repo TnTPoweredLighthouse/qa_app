@@ -1,0 +1,24 @@
+.container {
+    display: flex;
+    place-content: end;
+    flex-direction: column;
+    height: 200px;
+}
+
+.categories-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.add-link {
+    display: flex;
+    background-color: #65558F;
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+}
