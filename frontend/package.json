@@ -10,6 +10,12 @@
     "test": "echo \"Test functionality has not yet been added to frontend; \" && exit 0"
   },
   "dependencies": {
+    "@emotion/cache": "^11.14.0",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/icons-material": "^6.4.3",
+    "@mui/material": "^6.4.3",
+    "@mui/material-nextjs": "^6.4.3",
     "@tanstack/react-query": "^5.66.0",
     "next": "15.1.2",
     "react": "^19.0.0",
