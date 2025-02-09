@@ -1,7 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
-
 import css from "./side-menu-header.module.css"
+import ControlPointIcon from '@mui/icons-material/ControlPoint';
 
 export default async function SideMenuHeader() {
     const addCategoryHref = "/categories/create"
@@ -11,12 +11,7 @@ export default async function SideMenuHeader() {
             <div className={css['categories-container']}>
                 <span>Categories:</span>
                 <Link href={addCategoryHref} className={css['add-link']}>
-                    <Image
-                        width={24}
-                        height={24}
-                        src='/add-circle-svgrepo-com.svg'
-                        alt="add"
-                    />
+                    <ControlPointIcon  />
                 </Link>
             </div>
         </div>
