@@ -1,8 +1,9 @@
-.container {
-    padding: 10px;
-
-}
 
 .container ul {
     list-style: none outside none;
+}
+
+
+.container ul li {
+   margin: 10px 0;
 }
