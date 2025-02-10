@@ -13,6 +13,5 @@ export const apiConfig = {
         entities: `${apiFullUrl}/questions`,
         questionsForCategory: category => `${apiFullUrl}/questions/${category}`,
         categories: () => `${apiFullUrl}/categories`
-
     }
 }

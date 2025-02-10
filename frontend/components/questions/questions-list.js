@@ -1,35 +1,8 @@
-'use client'
 
-import { useQuery } from '@tanstack/react-query';
 import QuestionsListItem from './questions-list-item';
-import { fetchQuestionsForCategory } from '@/lib/http';
-
 import css from './questions-list.module.css'
 
-export default function QuestionsList({ category }) {
-
-    const { data: questions, isLoading, isError, error } = useQuery({
-        queryKey: ['questions'],
-        queryFn: async () => await fetchQuestionsForCategory(category),
-    });
-
-
-    if (isLoading) {
-        return (
-            <div>
-                Loading
-            </div>
-        )
-    }
-
-    if (isError) {
-        return (
-            <div>
-                Error fetching categories: {error.text}
-            </div>
-        )
-    }
-
+export default function QuestionsList({ questions }) {
 
     if (questions) {
         return (
