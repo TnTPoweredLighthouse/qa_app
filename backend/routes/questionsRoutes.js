@@ -28,16 +28,17 @@ export default () => {
 
     router.get(ENDPOINTS.GET_FOR_CATEGORY, async (req, res) => {
         const { categoryId } = req.params;
+        const { offset = 0, limit = -1 } = req.query;
 
         try {
-            const questions = await getAllQuestionsForCategopry(categoryId);
+            const questions = await getAllQuestionsForCategopry({ categoryId, offset, limit });
             if (questions) {
                 res.status(200).send({ data: questions });
             } else {
                 res.status(404).send('Category does not exist');
             }
         } catch (e) {
-            res.status(501).send('Error getting categories, ', e);
+            res.status(500).send('Error getting questions for the category, ', e.message);
         }
     });
 
