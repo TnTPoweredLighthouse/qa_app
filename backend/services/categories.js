@@ -3,25 +3,13 @@ import constants from "../config/constants.js";
 
 const { DEFAULT_USERNAME } = constants;
 
-export const getAllCategories = async (username = DEFAULT_USERNAME) => {
-    return await User.aggregate([
-        {
-            $match: {
-                "name": username
-            }
-        },
-        {
-            "$unwind": "$categories"
-        },
-        {
-            $project: {
-                "_id": 0,
-                "name": "$categories.name",
-                "id": "$categories._id",
-                "questionsQuantity": {
-                    $size: "$categories.questions"
-                }
-            }
-        }
-    ]);
+export const getAllCategories = async () => {
+    console.log('getting all the possible categories');
+    // Temporary solution. at the moment we have only one user, one category. \
+    // Later it should be enhanced with getAllQuestionsForUserInCategory, 
+    // getRangeOfQuestionsforUserInCategory and etc etc
+
+    const userData = await User.findOne({ name: DEFAULT_USERNAME });
+    const categories = userData.categories.map(cat => ({ name: cat.name, id: cat._id, questionsQuantity: cat.questions.length }));
+    return categories;
 };
