@@ -26,7 +26,7 @@ export default () => {
             const categories = await getAllCategories();
             res.status(200).send({ data: categories });
         } catch (e) {
-            res.status(500).send({ error: e });
+            res.status(501).send({ error: e });
         }
     });
     router.post(ENDPOINTS.POST_ALL, async (req, res) => {
