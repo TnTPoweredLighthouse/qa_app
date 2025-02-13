@@ -1,6 +1,8 @@
 import User from "../models/user.js";
 import constants from "../config/constants.js";
 
+import sol_arch_assosiate from './db_seed/aws_solution_architect_assosiate.js';
+
 const { DEFAULT_USERNAME } = constants;
 
 const userData = {
@@ -27,6 +29,10 @@ const userData = {
                     answer: 'To get to the other side.'
                 },
             ]
+        },
+        {
+            name: 'AWS Solution Architect Assosiate',
+            questions: sol_arch_assosiate
         }
     ]
 };

@@ -7,7 +7,7 @@ export default function Question({ body }) {
                 <div>
                     Question:
                 </div>
-                <div >
+                <div className={css['question-body']}>
                     {body}
                 </div>
             </div>

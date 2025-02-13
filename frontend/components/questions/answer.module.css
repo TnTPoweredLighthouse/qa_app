@@ -11,3 +11,7 @@
     border-radius: 20px;
 
 }
+
+.answer-body {
+    white-space: pre-line;
+}
