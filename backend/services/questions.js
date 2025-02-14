@@ -1,13 +1,58 @@
 import User from "../models/user.js";
 import constants from "../config/constants.js";
+import mongoose from "mongoose";
 
 const { DEFAULT_USERNAME } = constants;
 
-export const getAllQuestionsForCategopry = async (categoryId) => {
-    const userData = await User.findOne({ name: DEFAULT_USERNAME });
+export const getAllQuestionsForCategopry = async (config) => {
+    const { username = DEFAULT_USERNAME, categoryId, offset = 0, limit = -1 } = config;
 
-    const categories = userData.categories;
-    const category = categories.id(categoryId);
+    const aggregationSteps = [
+        {
+            $match: {
+                "name": username
+            }
+        },
+        {
+            "$unwind": "$categories"
+        },
+        {
+            "$replaceRoot": {
+                "newRoot": "$categories"
+            }
+        },
+        {
+            $match: {
+                "_id": new mongoose.Types.ObjectId(categoryId)
+            }
+        },
+        {
+            "$unwind": "$questions"
+        },
+        {
+            "$skip": offset
+        },
+        {
+            "$replaceRoot": {
+                "newRoot": "$questions"
+            }
+        },
+        {
+            $project: {
+                "answer": 1,
+                "question": "$body",
+                "id": "$_id"
+            }
+        }
+    ];
 
-    return category.questions.map(q => ({ question: q.body, answer: q.answer, id: q._id, }));
+    if (limit > 0) {
+        aggregationSteps.push(
+            {
+                "$limit": limit
+            },
+        );
+    }
+
+    return await User.aggregate(aggregationSteps);
 };
