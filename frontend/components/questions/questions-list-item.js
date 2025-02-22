@@ -1,13 +1,15 @@
 import Question from "./question"
 import Answer from "./answer"
 
-export default function QuestionsListItem({ question: q }) {
+export default function QuestionsListItem({ question: q, hideAnswer }) {
     const { question, answer } = q
 
     return (
         <>
             <Question body={question}></Question>
-            <Answer body={answer} ></Answer>
+
+            {hideAnswer ? <></> : <Answer body={answer} ></Answer>}
+
         </>
     )
 }

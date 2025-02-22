@@ -1,27 +1,19 @@
-import {Suspense} from 'react';
+import { Suspense } from 'react';
 import QuestionsList from "@/components/questions/questions-list";
-import { fetchQuestionsForCategory } from '@/lib/http';
+import { fetchQuestionsForCategory } from '@/actions/fetchQuestions';
 
 import css from './categories-page.module.css'
 
-const Questions = async ({category}) => {
-   
-    const questions = await fetchQuestionsForCategory(category);
-
-    return (
-        <div className={css.container}>
-            <QuestionsList questions={questions} />
-        </div>
-    );
-}
+const initialNumberOfQuestions = 5; // TODO: move to constants
 
 export default async function CategoryPage({ params }) {
     const { category } = await params
-    
+    const questions = await fetchQuestionsForCategory(category, 0, initialNumberOfQuestions);
+
     return (
         <div className={css.container} >
-            <Suspense fallback={<div>Loading...</div>}> 
-                <Questions category={category} />
+            <Suspense fallback={<div>Loading...</div>}>
+                <QuestionsList initialQuestions={questions} categoryId={category} />
             </Suspense>
         </div>
     );

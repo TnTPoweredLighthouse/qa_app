@@ -20,8 +20,9 @@ export async function fetchCategories() {
     return data;
 }
 
-export async function fetchQuestionsForCategory(category) {
-    const url = apiConfig.endpoints.questionsForCategory(category)
+export async function fetchQuestionsForCategory(category, offset, limit) {
+    const url = apiConfig.endpoints.questionsForCategory(category, offset, limit)
+
     const response = await fetch(url);
 
     if (!response.ok) {
