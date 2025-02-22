@@ -20,17 +20,18 @@ export async function fetchCategories() {
     return data;
 }
 
-export async function fetchQuestionsForCategory(category) {
-    const url = apiConfig.endpoints.questionsForCategory(category)
-    const response = await fetch(url);
+// export async function fetchQuestionsForCategory(category, offset, limit) {
+//     const url = apiConfig.endpoints.questionsForCategory(category, offset, limit)
 
-    if (!response.ok) {
-        const error = new Error('An error occurred while fetching the questions');
-        error.code = response.status;
-        error.info = await response.json();
-        throw error;
-    }
+//     const response = await fetch(url);
 
-    const { data } = await response.json()
-    return data;
-}
+//     if (!response.ok) {
+//         const error = new Error('An error occurred while fetching the questions');
+//         error.code = response.status;
+//         error.info = await response.json();
+//         throw error;
+//     }
+
+//     const { data } = await response.json()
+//     return data;
+// }

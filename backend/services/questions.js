@@ -30,7 +30,7 @@ export const getAllQuestionsForCategopry = async (config) => {
             "$unwind": "$questions"
         },
         {
-            "$skip": offset
+            "$skip": Number(offset)
         },
         {
             "$replaceRoot": {
@@ -49,7 +49,7 @@ export const getAllQuestionsForCategopry = async (config) => {
     if (limit > 0) {
         aggregationSteps.push(
             {
-                "$limit": limit
+                "$limit": Number(limit)
             },
         );
     }
