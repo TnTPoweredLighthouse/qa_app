@@ -13,7 +13,6 @@ export async function fetchQuestionsForCategory({ category, offset, limit }) {
         error.info = await response.json();
         throw error;
     }
-
     const { data } = await response.json()
     return data;
 }
