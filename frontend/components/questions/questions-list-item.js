@@ -7,9 +7,7 @@ export default function QuestionsListItem({ question: q, showAnswer }) {
     return (
         <>
             <Question body={question}></Question>
-
             {showAnswer ? <Answer body={answer} ></Answer> : null}
-
         </>
     )
 }

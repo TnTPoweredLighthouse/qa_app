@@ -69,6 +69,7 @@ export default function QuestionsList({ initialQuestions, categoryId }) {
                     <Button disabled={isNothingToShowMore} variant="contained" loading={isLoading} onClick={showNext}>{isNothingToShowMore ? "Finished" : "Show more"}</Button>
                 </div>
             </div>
+
         )
     }
 }
